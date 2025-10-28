@@ -9,14 +9,14 @@ jobs:
   newman:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4  # Atualizado
 
       - name: Create dir
         run: mkdir testArtifacts
 
       # Config environment
       - name: Install Node
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v4  # Atualizado
 
       - name: Install Newman
         run: |
@@ -27,7 +27,7 @@ jobs:
         run: newman run ServeRest.postman_collection.json -e serveRest_env.postman_environment.json -r cli,htmlextra
 
       - name: Report
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v4  # ✅ Corrigido
         with:
           name: Reports
           path: newman
